@@ -74,7 +74,7 @@ class Header extends Component {
                             />
                         </IconButton>
                         <Typography variant="h6">
-                            Fundoo_
+                            Fundoo_ satya
                         </Typography>
                         <Button color="inherit">Login</Button>
                     </Toolbar>
