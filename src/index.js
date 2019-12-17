@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 // bootstrpa css
-
+import 'bootstrap/dist/css/bootstrap.css';
 import "./assets/css/_style.css";
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -7,10 +7,8 @@ class MainApp extends Component {
     render() {
         return (
             <div>
-                <Header />
-                <hr />
-                this is AllNote Page
-                     < Allnotes />
+                 <Header />
+                 <Allnotes />
             </div>
         )
     }

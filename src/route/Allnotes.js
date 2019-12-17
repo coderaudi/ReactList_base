@@ -7,6 +7,12 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
+
+import NotePad from "../components/Note";
 
 class AllNote extends Component {
 
@@ -20,8 +26,8 @@ class AllNote extends Component {
         }
     }
 
-    onChageNote = (name , value) => {
-    
+    onChageNote = (name, value) => {
+
         if (value) {
             this.setState({
                 [name]: value
@@ -36,19 +42,19 @@ class AllNote extends Component {
             let oldNotes = vm.allNotes;
 
             let noteObj = {
-                title : vm.noteTitle,
-                note : vm.note
+                title: vm.noteTitle,
+                note: vm.note
             }
 
             oldNotes.push(noteObj);
 
-            
+
 
             if (oldNotes) {
                 this.setState({
                     allNotes: oldNotes,
                     note: "",
-                    noteTitle : ""
+                    noteTitle: ""
                 })
             }
         }
@@ -68,19 +74,29 @@ class AllNote extends Component {
         let mylist = this.state.allNotes;
         let resultList = mylist.map((obj, index) => {
             return (
-                <div key={index} style={{ width : "250px"}}>
+                <div key={index} style={{ width: "250px" }}>
 
-                    <Paper >
-                        <Typography variant="h5" component="h3">
-                            {obj.title}
-                            <div style={{ float: "right" }}>
-                                <DeleteRoundedIcon onClick={e => this.deleteNote(e, index)} />
-                            </div>
-                        </Typography>
-                        <Typography component="p">
-                            {obj.note}
-                        </Typography>
-                    </Paper>
+                    <div style={{ width: "200px" , margin : "5px" }}>
+                        <Card className="noteCard">
+                            <CardContent>
+                                <Typography variant="h5" component="h2">
+                                    {obj.title}
+                                </Typography>
+
+                                <Typography variant="body2" component="p">
+                                    {obj.note}
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <div style={{ float: "right" }}>
+                                    <DeleteRoundedIcon onClick={e => this.deleteNote(e, index)} />
+                                </div>
+                            </CardActions>
+                        </Card>
+
+                    </div>
+
+
                 </div>
             )
         })
@@ -95,33 +111,12 @@ class AllNote extends Component {
 
         return (
             <div>
-               <TextField id="standard-basic" 
-               label="Standard"
-               name="noteTitle"
-               value={this.state.noteTitle}
-               onChange={e => this.onChageNote( e.target.name , e.target.value)}
-                />
-                <TextareaAutosize
-                    aria-label="minimum height"
-                    rows={6}
-                    placeholder="Minimum 3 rows"
-                    name="note"
-                    value={this.state.note}
-                    onChange={e => this.onChageNote( e.target.name , e.target.value)}
-                />
+               <NotePad />
 
-                <br />
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={e => this.addNote(e)}
-                >
-                    Add Note
-                  </Button>
-
-                <hr />
-
-                {this.displayNoteList()}
+              <hr />
+               <div>
+               {this.displayNoteList()}
+               </div>
 
             </div>
         )

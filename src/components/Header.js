@@ -22,7 +22,7 @@ class Header extends Component {
         super(props);
 
         this.state = {
-            left: true
+            left: false
         }
     }
 
